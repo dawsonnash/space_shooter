@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\BlackHole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\BlackHole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\CameraZoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\CameraZoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CameraZoom.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\CameraZoom.cs",
+              "RelativeDocumentMoniker": "Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\CameraZoom.cs",
+              "ToolTip": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\CameraZoom.cs",
+              "RelativeToolTip": "Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\CameraZoom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T20:20:05.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BlackHole.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\BlackHole.cs",
+              "RelativeDocumentMoniker": "Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\BlackHole.cs",
+              "ToolTip": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\BlackHole.cs",
+              "RelativeToolTip": "Assets\\TextMesh Pro\\Resources\\Fonts \u0026 Materials\\BlackHole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T20:16:53.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\dawso\\dev\\Unity\\Space Shooter\\Assets\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\PlayerMovement.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T17:52:20.041Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
