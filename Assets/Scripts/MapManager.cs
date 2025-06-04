@@ -1,16 +1,29 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
     public GameObject mapPanel;
     public SpriteRenderer innerBackground;
+    public PlayerMovement playerMovement;  // Drag in Player GameObject with PlayerMovement script
+
+    // Map Tracked Objects
     public RectTransform playerIcon;
     public Transform playerTransform;
+    public RectTransform blackHoleIcon;
+    public Transform blackHoleTransform;
 
-    public float mapScale = 0.01f; // Scale world position to fit map UI
+    // Configurable Settings
+    public float playerIconSizeOverride = 30f; // Player icon fixed size
+    public float maxWorldSize = 50f;           // Used for scaling other objects
+    public float maxIconSize = 40f;
+    public float minIconSize = 5f;
 
     private bool isMapVisible = false;
+    public GameObject hudPanel;
+    public RectTransform focusRing;
+
+
 
     void Update()
     {
@@ -18,28 +31,76 @@ public class MapManager : MonoBehaviour
         {
             isMapVisible = !isMapVisible;
             mapPanel.SetActive(isMapVisible);
+            hudPanel.SetActive(!isMapVisible); // hide HUD when map is open
         }
 
-        if (isMapVisible && playerIcon != null && playerTransform != null && innerBackground != null)
+
+        if (!isMapVisible || innerBackground == null || mapPanel == null)
+            return;
+
+        Bounds bounds = innerBackground.bounds;
+        RectTransform mapRect = mapPanel.GetComponent<RectTransform>();
+
+        if (playerTransform != null && playerIcon != null)
         {
-            Bounds bounds = innerBackground.bounds;
-
-            // Normalize player's position within inner bounds (0�1 range)
-            float normX = Mathf.InverseLerp(bounds.min.x, bounds.max.x, playerTransform.position.x);
-            float normY = Mathf.InverseLerp(bounds.min.y, bounds.max.y, playerTransform.position.y);
-
-            // Convert to map panel space (assuming anchored center)
-            float mapWidth = mapPanel.GetComponent<RectTransform>().rect.width;
-            float mapHeight = mapPanel.GetComponent<RectTransform>().rect.height;
-
-            Vector2 mapPos = new Vector2(
-                (normX - 0.5f) * mapWidth,
-                (normY - 0.5f) * mapHeight
-            );
-
-            playerIcon.anchoredPosition = mapPos;
-            playerIcon.rotation = playerTransform.rotation; // optional
+            PositionMapIcon(playerTransform, playerIcon, bounds, mapRect, true, playerIconSizeOverride);
         }
 
+        if (blackHoleTransform != null && blackHoleIcon != null)
+        {
+            PositionMapIcon(blackHoleTransform, blackHoleIcon, bounds, mapRect, false);
+        }
+
+        // ➕ Add more objects here:
+        // PositionMapIcon(planetTransform, planetIcon, bounds, mapRect, false);
     }
+
+
+    void PositionMapIcon(
+        Transform worldObject,
+        RectTransform icon,
+        Bounds worldBounds,
+        RectTransform mapRect,
+        bool rotateIcon,
+        float overrideSize = -1f // Optional: if > 0, use this size directly
+    )
+    {
+        float normX = Mathf.InverseLerp(worldBounds.min.x, worldBounds.max.x, worldObject.position.x);
+        float normY = Mathf.InverseLerp(worldBounds.min.y, worldBounds.max.y, worldObject.position.y);
+
+        float mapWidth = mapRect.rect.width;
+        float mapHeight = mapRect.rect.height;
+
+        Vector2 mapPos = new Vector2(
+            (normX - 0.5f) * mapWidth,
+            (normY - 0.5f) * mapHeight
+        );
+
+        icon.anchoredPosition = mapPos;
+
+        if (rotateIcon)
+            icon.rotation = worldObject.rotation;
+
+        float iconSize = overrideSize > 0f
+            ? overrideSize
+            : Mathf.Lerp(minIconSize, maxIconSize, Mathf.Clamp01(worldObject.localScale.x / maxWorldSize));
+
+        icon.sizeDelta = new Vector2(iconSize, iconSize);
+    }
+
+    public void ShowFocusRingAt(RectTransform icon)
+    {
+        if (focusRing == null) return;
+
+        focusRing.gameObject.SetActive(true);
+        focusRing.position = icon.position;
+        focusRing.sizeDelta = icon.sizeDelta * 1.5f; // scale ring a bit larger
+    }
+
+    public void HideFocusRing()
+    {
+        if (focusRing != null)
+            focusRing.gameObject.SetActive(false);
+    }
+
 }
