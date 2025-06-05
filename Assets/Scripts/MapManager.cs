@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class MapManager : MonoBehaviour
     private bool isMapVisible = false;
     public GameObject hudPanel;
     public RectTransform focusRing;
+    public TMP_Text mapDistanceText;
 
 
 
@@ -53,7 +55,27 @@ public class MapManager : MonoBehaviour
 
         // ➕ Add more objects here:
         // PositionMapIcon(planetTransform, planetIcon, bounds, mapRect, false);
+
+        if (playerMovement != null && playerMovement.trackedTarget != null && mapDistanceText != null)
+        {
+            float distance = Vector2.Distance(playerMovement.transform.position, playerMovement.trackedTarget.position);
+            mapDistanceText.text = FormatDistance(distance);
+        }
+        else if (mapDistanceText != null)
+        {
+            mapDistanceText.text = "";
+        }
+
     }
+
+    string FormatDistance(float distance)
+    {
+        if (distance >= 1000f)
+            return $"{(distance / 1000f):F2} km";
+        else
+            return $"{distance:F0} m";
+    }
+
 
 
     void PositionMapIcon(
@@ -90,17 +112,25 @@ public class MapManager : MonoBehaviour
 
     public void ShowFocusRingAt(RectTransform icon)
     {
-        if (focusRing == null) return;
+        if (focusRing == null || mapDistanceText == null) return;
 
         focusRing.gameObject.SetActive(true);
         focusRing.position = icon.position;
-        focusRing.sizeDelta = icon.sizeDelta * 1.5f; // scale ring a bit larger
+        focusRing.sizeDelta = icon.sizeDelta * 1.5f;
+
+        // Offset the distance label slightly below the ring
+        mapDistanceText.gameObject.SetActive(true);
+        mapDistanceText.rectTransform.position = icon.position + new Vector3(0, -30f, 0); // adjust as needed
     }
+
 
     public void HideFocusRing()
     {
         if (focusRing != null)
             focusRing.gameObject.SetActive(false);
+
+        if (mapDistanceText != null)
+            mapDistanceText.gameObject.SetActive(false);
     }
 
 }

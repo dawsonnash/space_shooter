@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public RectTransform targetIndicator;
     public float hudTargetRadius = 90f; // same as HUD ring size
     public Transform trackedTarget; // assign this when a planet is selected
+    public TMP_Text hudDistanceText;
 
 
     [Header("UI Text")]
@@ -205,6 +206,30 @@ public class PlayerMovement : MonoBehaviour
         targetIndicator.anchoredPosition = hudPos;
 
         targetIndicator.rotation = Quaternion.Euler(0, 0, angleToTarget);
+
+        if (hudDistanceText != null)
+        {
+            if (trackedTarget != null)
+            {
+                hudDistanceText.gameObject.SetActive(true);
+                float distance = Vector2.Distance(transform.position, trackedTarget.position);
+                hudDistanceText.text = FormatDistance(distance);
+            }
+            else
+            {
+                hudDistanceText.gameObject.SetActive(false);
+            }
+        }
+
+
+    }
+
+    string FormatDistance(float distance)
+    {
+        if (distance >= 1000f)
+            return $"{(distance / 1000f):F2} km";
+        else
+            return $"{distance:F0} m";
     }
 
 }
